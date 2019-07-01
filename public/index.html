@@ -7,9 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body> 
-
-    <input type="text" placeholder="Search.." class="input" id="search" onkeydown="searchWord(keyword)"> 
-    <button onclick="search()">Submit</button>
+    <div>
+        <input type="search" placeholder="Search.." class="searchBox" id="searchBox"> 
+        <button type="submit" onclick="search()">Submit</button>
+        <!-- <button type="reset" onClick="reset()">Reset</button> -->
+        <button type="cart" onClick="viewCart()">View Cart</button>
+    </div>
 
     <div id="products"></div>
 
