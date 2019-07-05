@@ -4,17 +4,46 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>My Store</title>
+    <link href="https://fonts.googleapis.com/css?family=Hammersmith+One|Kaushan+Script|Lato|Saira|Sawarabi+Mincho&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="store-styles.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-<body> 
-    <div>
-        <input type="search" placeholder="Search.." class="searchBox" id="searchBox"> 
+
+<body>
+
+<!-- Navigation Bar -->
+<nav class="navbar">
+    <div class="navbar-center">
+        <div class="cart-btn">
+            <span><img class = "icon hamburger" src="/images/hamburger.png"></span>
+        </div>
+        <h1>Kelly's Minimart</h1>
+        <div class="cart-btn">
+            <span><img class = "icon cartNum" src="/images/shopping-cart-256.png"></span>
+            <div class="cart-items">0</div>
+        </div>
+    </div>
+</nav>
+ <!-- Search Bar -->
+    <div id="searchSection">
+        <br>
+        <input type="search" placeholder="Search.." class="searchBox" id="searchBox" oninput = "search()"> 
         <button type="submit" onclick="search()">Submit</button>
         <!-- <button type="reset" onClick="reset()">Reset</button> -->
         <button type="cart" onClick="viewCart()">View Cart</button>
+        <br> <br>
     </div>
 
-    <div id="products"></div>
+
+<!-- Products -->
+    <section class="prodContainer">
+        <div class="products img-container" id="products"></div>
+        
+        <!-- <button class="bag-btn" data-id="1">
+            <img class = "icon cartNum" src="/images/shopping-cart-256.png">Add to Bag
+        </button> -->
+
+    </section>
 
     <script src="products.js"></script>    
     <script src="index.js"></script>   
