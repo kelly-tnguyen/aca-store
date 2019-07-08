@@ -13,11 +13,20 @@ function Products(products){
          <div>Price: ${product.price}</li></div>
          <br>
          <button id = "viewBtn ${product.id}" onClick="ProductDetails(${product.id})">View</button><br>
-         <button id="bag-btn">
+         <button id="bag-btn${product.id}" onClick="addToCart(${product.id})">
             <img class = "icon cartNum smallerCart" src="/images/shopping-cart-256.png">Add to Cart</button>
+            <div id="cartView${product.id}"></div>
           </div>`
        }
     document.getElementById("products").innerHTML = productDivs;
+
+    let counter = 0;
+    shoppingCart.map(p => {
+        counter = counter + p.quantity
+    })
+    document.getElementsByClassName("cart-items").innerHTML = counter;
+
+    document.getElementById("numberCart").innerHTML = `${counter}`;
 }
 
 window.onload = () => {
@@ -51,4 +60,40 @@ function search(){
     Products(filteredProducts);
 }
 
+function addToCart(prodID){
+    let foundProd = products.find(p => p.id === prodID);
+    let inCart = shoppingCart.find(p => p.id === prodID);
+    
+    if (!inCart) {
+        shoppingCart.push(foundProd);
+        shoppingCart.find(p => p.id === prodID).quantity=1;
+        
+    } else {
+        inCart.quantity +=1;
+    }
+    console.log(shoppingCart);
+    
+    Products(products);
+}
 
+function inCart() {
+    Products(shoppingCart);
+    shoppingCart.map(p => { 
+       let bagBtn = document.getElementById(`bag-btn${p.id}`);
+       bagBtn.innerHTML = "Remove";
+       bagBtn.setAttribute( "onClick", `remove(${p.id})`);
+
+        document.getElementById(`cartView${p.id}`).innerHTML = `QTY: ${p.quantity}`;
+    });
+}
+
+function remove(prodId) {
+    let idx = shoppingCart.findIndex(p => p.id === prodId);
+    shoppingCart.splice(idx, 1);
+    inCart();
+}
+
+function goHome() {
+    Products(products);
+    document.getElementById("goHome");
+}

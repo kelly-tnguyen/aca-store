@@ -17,10 +17,10 @@
         <div class="cart-btn">
             <span><img class = "icon hamburger" src="/images/hamburger.png"></span>
         </div>
-        <h1>Kelly's Minimart</h1>
+        <button id="home" onclick="goHome()"><h1 id="goHome">Kelly's Minimart</h1></button>
         <div class="cart-btn">
-            <span><img class = "icon cartNum" src="/images/shopping-cart-256.png"></span>
-            <div class="cart-items">0</div>
+            <span><img onClick="inCart()" class = "icon cartNum" src="/images/shopping-cart-256.png"></span>
+            <div id="numberCart" onClick="incart()" class="cart-items"></div>
         </div>
     </div>
 </nav>
@@ -30,7 +30,6 @@
         <input type="search" placeholder="Search.." class="searchBox" id="searchBox" oninput = "search()"> 
         <button type="submit" onclick="search()">Submit</button>
         <!-- <button type="reset" onClick="reset()">Reset</button> -->
-        <button type="cart" onClick="viewCart()">View Cart</button>
         <br> <br>
     </div>
 
@@ -42,8 +41,36 @@
         <!-- <button class="bag-btn" data-id="1">
             <img class = "icon cartNum" src="/images/shopping-cart-256.png">Add to Bag
         </button> -->
-
     </section>
+
+<!-- Cart -->
+ <!-- <div class="cart-overlay">
+    <div class="cart">
+        <span class = "close-cart"> <img class="exit" src="/images/exit.png"> </span>
+        <h2>Your Cart</h2>
+        <div class="cart-content"></div> -->
+        <!-- Cart Item -->
+        <!-- <div class="cart-item">
+            <img class="productPic" src="/images/product test.png">
+            <div>
+                <h4>Queen Bed</h4>
+                <h5>$9.00</h5>
+                <span class="remove-item">Remove</span>
+            </div>
+            <div>
+                <img class="increase pic" src="/images/increase.png">
+                <p class="item-amount">1</p>
+                <img class="decrease pic" src="/images/decrease.png">
+            </div>
+        </div> -->
+        <!-- End of Cart Item -->
+    
+<!-- <div class="cart-footer">
+        <h3>Your Total: $ <span class="cart-total">0</span> </h3>
+        <button class="clear-cart banner-btn">Clear Cart</button>
+    </div>
+</div>
+</div> -->
 
     <script src="products.js"></script>    
     <script src="index.js"></script>   
