@@ -11,6 +11,19 @@
 
 <body>
 
+<div id="registration">
+        <form>
+            <h2 id="welcome">Welcome to</h2>
+            <h1 id="">Kelly's MiniMart</h1>
+            <input type="text" placeholder="Username"><br>
+            <input type="email" id="email" placeholder="Email"><br>
+            <input type="password"  id="password" placeholder="Password"><br><br>
+            <button class="button submit" id ="btnSignup" type="button" onClick="signUp()">Sign In</button> 
+        </form>
+    </div>
+
+
+<div id = "mainScreen" style="display:none">
 <!-- Navigation Bar -->
 <nav class="navbar">
     <div class="navbar-center">
@@ -24,6 +37,7 @@
         </div>
     </div>
 </nav>
+
  <!-- Search Bar -->
     <div id="searchSection">
         <br>
@@ -42,7 +56,7 @@
             <img class = "icon cartNum" src="/images/shopping-cart-256.png">Add to Bag
         </button> -->
     </section>
-
+</div>
 <!-- Cart -->
  <!-- <div class="cart-overlay">
     <div class="cart">
@@ -72,7 +86,7 @@
 </div>
 </div> -->
 
-    <script src="products.js"></script>    
+    <!-- <script src="products.js"></script>     -->
     <script src="index.js"></script>   
 </body>
 </html>

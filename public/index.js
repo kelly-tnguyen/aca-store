@@ -1,4 +1,5 @@
 let shoppingCart = [];
+let products = [];
 
 function Products(products){
     let productDivs = "";
@@ -13,7 +14,7 @@ function Products(products){
          <div>Price: ${product.price}</li></div>
          <br>
          <button id = "viewBtn ${product.id}" onClick="ProductDetails(${product.id})">View</button><br>
-         <button id="bag-btn${product.id}" onClick="addToCart(${product.id})">
+         <button id="bag-btn ${product.id}" onClick="addToCart(${product.id})">
             <img class = "icon cartNum smallerCart" src="/images/shopping-cart-256.png">Add to Cart</button>
             <div id="cartView${product.id}"></div>
           </div>`
@@ -30,8 +31,40 @@ function Products(products){
 }
 
 window.onload = () => {
-    Products(products);
+        fetch("https://acastore.herokuapp.com/products")
+        .then(response => response.json())
+        .then(data => products = data)
+        .then(products => Products(products));
+    // Products(products);
+    mainScreen = document.getElementById("mainScreen");
+    registration = document.getElementById("registration");
+    btnSignup = document.getElementById("btnSignup");
+    btnSignup.onclick = signUp;
+    txtEmail = document.getElementById("email");
+    txtPassword = document.getElementById("password");
 }
+
+class User {
+    constrctor(email, password, cartId) {
+        this.email = email;
+        this.password = password;
+        this.cartId = cartId;
+    }
+}
+    function signUp() {
+        mainScreen.style.display = "block";
+        registration.style.display = "none";
+        let newUser = new User(txtEmail.value, txtPassword.value, null);
+        fetch("https://acastore.herokuapp.com/users", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(newUser)
+        }).then(response => response.json());
+        console.log(newUser);
+        localStorage.setItem('newUser', JSON.stringify(newUser));
+    }
 
 function ProductDetails(id) {
     let product = products.find(p=>p.id === id);
@@ -79,7 +112,7 @@ function addToCart(prodID){
 function inCart() {
     Products(shoppingCart);
     shoppingCart.map(p => { 
-       let bagBtn = document.getElementById(`bag-btn${p.id}`);
+       let bagBtn = document.getElementById(`bag-btn ${p.id}`);
        bagBtn.innerHTML = "Remove";
        bagBtn.setAttribute( "onClick", `remove(${p.id})`);
 
@@ -93,7 +126,7 @@ function remove(prodId) {
     inCart();
 }
 
-function goHome() {
-    Products(products);
-    document.getElementById("goHome");
-}
+// function goHome() {
+//     Products(products);
+//     document.getElementById("goHome");
+// }
